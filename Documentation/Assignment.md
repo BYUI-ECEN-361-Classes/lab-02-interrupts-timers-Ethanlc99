@@ -1,6 +1,6 @@
 # ECEN-361 Lab-02: Clocks, Timers, and Interrupts
 ### Winter-2025
-     Student Name:  Fill-in HERE
+     Student Name:  Ethan Carlson
 
 
 ## Introduction and Objective of the Lab
@@ -75,9 +75,9 @@ Note the speed of D1/D2/D3 - they should seem like a 3-bit binary counter.
 
 Once you have all three LEDs blinking properly, answer the following questions:
 
-1. At what frequency does D1 toggle? [*answer here*]
+1. At what frequency does D1 toggle? 1Hz
 
-2. Do all LEDs toggle at *exactly* the same time? [*answer here*]
+2. Do all LEDs toggle at *exactly* the same time? Sometimes
 
 ## Part 2: Changing the clock tree
 
@@ -92,11 +92,11 @@ Change the clock tree to adjust the rates at which the LEDs blink.
 
 ## Part 2 Questions (3 pts)
 
-1. What has happened to the speed of the timers? [*answer here*]
+1. What has happened to the speed of the timers? They slowed down
 
-2. What is the new frequency of LED D1? [*answer here*]
+2. What is the new frequency of LED D1? 0.25Hz
 
-3. When we changed the frequency, did the Seven-Segment Light update rate change?  (hint, look at the clocks driving the APB1, APB2 buses and which timers are on which bus.  Recall that the Seven-Segment timer is Tim17) [*answer here*]
+3. When we changed the frequency, did the Seven-Segment Light update rate change?  (hint, look at the clocks driving the APB1, APB2 buses and which timers are on which bus.  Recall that the Seven-Segment timer is Tim17) Yes
 
 ## Part 3: Reaction Timer (5 pts)
 
@@ -139,4 +139,6 @@ For Seven Segment Display Functions, check the MultiFunctionShield.h header file
 
 * Currently, the reaction tester can have a wait time anywhere between 0 and 7000 milliseconds, Implement a minimum wait time in such a way that doesn't change the potential maximum wait time
 
-If you do any of these items - just mention what and how it worked, [*here*].
+If you do any of these items - just mention what and how it worked.
+
+I added code in the got_stop function so that the result of the speed test will flash 5 times. I did this by creating a for loop that would iterate through 5 times. The loop clears the screen, delays for half a second, displays the result of the speed test, delays for half a second, then returns to the top of the loop. Once the for loop has gone through all its iterations, the result of the test is then displayed and the got_stop function is able to end. 

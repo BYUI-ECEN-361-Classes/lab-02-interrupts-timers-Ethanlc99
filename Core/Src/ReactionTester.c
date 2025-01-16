@@ -43,6 +43,7 @@ int rand_millisec;
 int last_reaction_time_in_millisec = 0;
 bool started_doing_reaction_timers = false;
 
+
 void show_a_random_number()
 	{
 	if (!started_doing_reaction_timers)
@@ -68,9 +69,14 @@ void got_start()
 
 	  /**************** STUDENT TO FILL IN START HERE ********************/
 		// Step 1
+		Display_Waiting();
 		// Step 2
+		HAL_Delay(rand_millisec);
 		// Step 3
+		Clear_LEDs();
+		Display_All();
 		// Step 4
+		HAL_TIM_Base_Start_IT(&htim3);
 	  /**************** STUDENT TO FILL IN END  HERE ********************/
 	}
 void got_stop()
@@ -86,11 +92,23 @@ void got_stop()
 
 	  /**************** STUDENT TO FILL IN START HERE ********************/
       // 1.) Stop the random timer // Random timer is timer3
-
+		HAL_TIM_Base_Stop_IT(&htim3);
       // 2.) Read the value of the timer -- this step provided
 		last_reaction_time_in_millisec = __HAL_TIM_GetCounter(&htim3) / 10; // Why is it divide by 10?
 
 	  // 3.) Display the value
+
+		for(int ii = 0; ii < 5; ii++)
+		{
+			MultiFunctionShield_Clear();
+			HAL_Delay(500);
+			MultiFunctionShield_Display(last_reaction_time_in_millisec);
+			HAL_Delay(500);
+		}
+
+		MultiFunctionShield_Clear();
+		MultiFunctionShield_Display(last_reaction_time_in_millisec);
+
 
 
       /**************** STUDENT TO FILL IN END HERE ********************/
